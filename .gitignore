@@ -1,0 +1,47 @@
+# Environment
+.env
+*.env.local
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+htmlcov/
+.coverage
+coverage.xml
+test.db
+
+# Node
+node_modules/
+dist/
+.vite/
+*.log
+
+# Docker
+postgres_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Archives
+*.zip
+*.tar.gz
+
+# Claude Code (local config, not needed in repo)
+.claude/
+
+# Miscellaneous
+{backend
