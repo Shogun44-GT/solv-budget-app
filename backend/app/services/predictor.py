@@ -22,7 +22,7 @@ CATEGORY_WEIGHTS = {
 }
 
 # Poids pour la moyenne glissante (plus récent = plus lourd)
-RECENCY_WEIGHTS = [0.05, 0.10, 0.15, 0.20, 0.25, 0.25]  # 6 derniers jours
+RECENCY_WEIGHTS = [0.04, 0.08, 0.12, 0.16, 0.28, 0.32]  # 6 derniers jours, récent = plus lourd
 
 
 def compute_prediction(

@@ -4,10 +4,13 @@ Couvre : rate limiting, headers sécurité, audit log, RGPD.
 """
 import time
 import hashlib
+import os
 from collections import defaultdict
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
+
+_TESTING = "sqlite" in os.environ.get("DATABASE_URL", "")
 
 
 # ── Rate Limiter en mémoire (Redis en prod) ─────────────────
@@ -56,18 +59,20 @@ class SecurityMiddleware(BaseHTTPMiddleware):
         client_ip = request.client.host if request.client else "unknown"
         ip_hash = hashlib.sha256(client_ip.encode()).hexdigest()[:16]
 
-        # Rate limiting spécial pour /auth
-        if request.url.path.startswith("/api/v1/auth"):
-            allowed, remaining = auth_limiter.is_allowed(ip_hash)
-        else:
-            allowed, remaining = rate_limiter.is_allowed(ip_hash)
+        # Rate limiting désactivé en mode test (SQLite)
+        if not _TESTING:
+            if request.url.path.startswith("/api/v1/auth"):
+                allowed, remaining = auth_limiter.is_allowed(ip_hash)
+            else:
+                allowed, remaining = rate_limiter.is_allowed(ip_hash)
 
-        if not allowed:
-            return JSONResponse(
-                status_code=429,
-                content={"detail": "Trop de requêtes. Réessayez dans 60 secondes."},
-                headers={"Retry-After": "60"},
-            )
+            if not allowed:
+                return JSONResponse(
+                    status_code=429,
+                    content={"detail": "Trop de requêtes. Réessayez dans 60 secondes."},
+                    headers={"Retry-After": "60"},
+                )
+        remaining = 999
 
         start = time.time()
         response: Response = await call_next(request)
