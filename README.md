@@ -135,7 +135,7 @@ coach-budget/
 
 ** Tagne Albert Yoan & Joan Andy Mballa Nsengue**
 Étudiant B3 IA & Big Data — ECE Paris
-[LinkedIn](https://linkedin.com/in/joan-andy-mballa-nsengue) · [GitHub](https://github.com/Shogun44-GT)
+[LinkedIn](https://linkedin.com/in/joan-andy-mballa-nsengue),(https://www.linkedin.com/in/yoantagne).  · [GitHub](https://github.com/Shogun44-GT), (https://github.com/albertyoan) 
 
 ---
 
