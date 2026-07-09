@@ -133,7 +133,7 @@ coach-budget/
 
 ## 👤 Auteur
 
-**Joan Andy Mballa Nsengue**
+** Tagne Albert Yoan & Joan Andy Mballa Nsengue**
 Étudiant B3 IA & Big Data — ECE Paris
 [LinkedIn](https://linkedin.com/in/joan-andy-mballa-nsengue) · [GitHub](https://github.com/Shogun44-GT)
 
